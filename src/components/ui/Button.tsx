@@ -4,8 +4,10 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 
+type ButtonVariant = 'create' | 'update' | 'delete';
+
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: 'create' | 'update' | 'delete';
+  variant: ButtonVariant;
   children: ReactNode;
 }
 
@@ -45,7 +47,6 @@ const StyledButton = styled.button<Props>`
       color: ${props.theme.colors.slate900};
       background-color: ${props.theme.colors.slate200};
     `}
-      
       
   /* 삭제버튼 */
   ${(props) =>
