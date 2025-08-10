@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import styled from '@emotion/styled';
 import React, { InputHTMLAttributes } from 'react';
@@ -15,13 +15,13 @@ function Input({ variant, ...rest }: Props) {
 
 export default Input;
 
-const SearchInput = styled.input`
+const DefaultInput = styled.input`
   border-radius: 24px;
 `;
-const TodoInput = styled.input`
-  border-radius: 27px;
-`;
-const DoneInput = styled(TodoInput)`
+
+const SearchInput = styled(DefaultInput)``;
+const TodoInput = styled(DefaultInput)``;
+const DoneInput = styled(DefaultInput)`
   background-color: ${(props) => props.theme.colors.violet100};
 `;
 
