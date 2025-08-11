@@ -1,18 +1,8 @@
-'use client';
-
-/** @jsxImportSource @emotion/react */
-import type { Metadata } from 'next';
-import { Geist } from 'next/font/google';
-import '@/styles/reset.css';
-
-import { ThemeProvider } from '@emotion/react';
-import { theme } from '@/styles/theme';
-import Gnb from '@/components/feature/Gnb';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
+import Gnb from "@/components/feature/Gnb";
+import { EmotionCacheProvider } from "@/styles/EmotionCacheProvider";
+import GlobalStyles from "@/styles/GlobalStyles";
+import { theme } from "@/styles/theme";
+import { ThemeProvider } from "@emotion/react";
 
 export default function RootLayout({
   children,
@@ -22,10 +12,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <ThemeProvider theme={theme}>
+        <EmotionCacheProvider>
+          <GlobalStyles />
           <Gnb />
+
           <main>{children}</main>
-        </ThemeProvider>
+        </EmotionCacheProvider>
       </body>
     </html>
   );

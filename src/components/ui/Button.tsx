@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
-type ButtonVariant = 'create' | 'update' | 'delete';
+type ButtonVariant = "create" | "update" | "delete";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: ButtonVariant;
@@ -31,18 +31,20 @@ const StyledButton = styled.button<Props>`
   font-size: ${(props) => props.theme.fontSizes.md};
   border-radius: 24px;
   border: 2px solid ${(props) => props.theme.colors.slate900};
+  border-bottom: 4px solid ${(props) => props.theme.colors.slate900};
+  border-right: 4px solid ${(props) => props.theme.colors.slate900};
 
   /* 등록버튼 */
   ${(props) =>
-    props.variant === 'create' &&
+    props.variant === "create" &&
     css`
-      color: ${props.theme.colors.slate900};
-      background-color: ${props.theme.colors.slate200};
+      color: white;
+      background-color: ${props.theme.colors.violet600};
     `}
 
   /* 수정버튼 */
   ${(props) =>
-    props.variant === 'update' &&
+    props.variant === "update" &&
     css`
       color: ${props.theme.colors.slate900};
       background-color: ${props.theme.colors.slate200};
@@ -50,7 +52,7 @@ const StyledButton = styled.button<Props>`
       
   /* 삭제버튼 */
   ${(props) =>
-    props.variant === 'delete' &&
+    props.variant === "delete" &&
     css`
       color: white;
       background-color: ${props.theme.colors.rose500};
