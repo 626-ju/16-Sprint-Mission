@@ -1,5 +1,4 @@
 import createEmotionServer, {
-  type EmotionServer,
 } from "@emotion/server/create-instance";
 import createCache from "@emotion/cache";
 

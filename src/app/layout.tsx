@@ -1,8 +1,7 @@
-import Gnb from "@/components/feature/Gnb";
-import { EmotionCacheProvider } from "@/styles/EmotionCacheProvider";
-import GlobalStyles from "@/styles/GlobalStyles";
-import { theme } from "@/styles/theme";
-import { ThemeProvider } from "@emotion/react";
+import Gnb from '@/components/feature/Gnb';
+import QueryProvider from '@/lib/QueryProvider';
+import { EmotionCacheProvider } from '@/styles/EmotionCacheProvider';
+import GlobalStyles from '@/styles/GlobalStyles';
 
 export default function RootLayout({
   children,
@@ -13,10 +12,12 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <EmotionCacheProvider>
-          <GlobalStyles />
-          <Gnb />
+          <QueryProvider>
+            <GlobalStyles />
+            <Gnb />
 
-          <main>{children}</main>
+            <main>{children}</main>
+          </QueryProvider>
         </EmotionCacheProvider>
       </body>
     </html>
