@@ -1,6 +1,6 @@
 import { getTodoList } from '@/service/getTodoList';
 import styled from '@emotion/styled';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Item } from '@/types/itemsType';
 import Button from '@/components/ui/Button';

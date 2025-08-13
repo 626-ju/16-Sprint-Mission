@@ -1,18 +1,15 @@
 import Badge from '@/components/ui/Badge';
 import React from 'react';
 import { StyledItems } from './Done';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { getTodoList } from '@/service/getTodoList';
 import { Item } from '@/types/itemsType';
 import Button from '@/components/ui/Button';
 import EmptyCheck from '@/assets/icon/emptyCheck.svg';
 import EmptyList from './EmptyList';
-import { patchTodo } from '@/service/patchTodo';
 import { useSwitchTodo } from '@/hooks/useSwitchTodo';
 
 function Todo() {
-  const queryClient = useQueryClient();
-
   const { data } = useQuery({
     queryKey: ['todoList'],
     queryFn: getTodoList,

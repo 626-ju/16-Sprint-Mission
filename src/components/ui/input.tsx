@@ -12,6 +12,7 @@ export default Input;
 const DefaultInput = styled.input`
   border-radius: 24px;
   outline: none;
+  padding-left: 24px;
 `;
 
 const AddInput = styled(DefaultInput)`

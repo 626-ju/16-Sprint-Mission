@@ -5,7 +5,7 @@ import React from 'react';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
 import { createTodo } from '@/service/createTodo';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
 interface FormValues {
@@ -13,11 +13,15 @@ interface FormValues {
 }
 
 function SearchForm() {
+  const queryClient = useQueryClient();
   const { register, handleSubmit, reset } = useForm<FormValues>();
 
   const { mutate } = useMutation({
     mutationFn: (newTodo: string) => createTodo(newTodo),
-    onSuccess: () => reset(),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['todoList'] });
+      reset();
+    },
   });
 
   const addTodo = (data: FormValues) => {
@@ -26,7 +30,7 @@ function SearchForm() {
 
   return (
     <StyledForm onSubmit={handleSubmit(addTodo)}>
-      <Input type='text' {...register('todo')} />
+      <Input type='text' {...register('todo')} placeholder='할 일을 입력해주세요' />
       <Button variant='create'>추가하기</Button>
     </StyledForm>
   );
