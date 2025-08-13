@@ -4,7 +4,7 @@ export const getTodoList = async () => {
   );
 
   if (!res.ok) {
-    throw new Error('Failed to upload the post.');
+    throw new Error('Failed to get the post.');
   }
 
   return await res.json();

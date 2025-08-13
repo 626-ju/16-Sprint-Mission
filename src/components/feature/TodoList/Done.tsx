@@ -7,6 +7,7 @@ import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 import FullCheck from '@/assets/icon/fillCheck.svg';
 import EmptyList from './EmptyList';
+import { useSwitchTodo } from '@/hooks/useSwitchTodo';
 
 function Done() {
   const { data } = useQuery({
@@ -14,6 +15,8 @@ function Done() {
     queryFn: getTodoList,
     staleTime: 60 * 5 * 100,
   });
+
+  const { mutate } = useSwitchTodo();
 
   const doneItems = data?.filter((item: Item) => item.isCompleted) ?? [];
 
@@ -25,7 +28,7 @@ function Done() {
           doneItems.map(({ id, name: content, isCompleted }: Item) => {
             return (
               <li key={id}>
-                <Button variant='done'>
+                <Button variant='done' onClick={() => mutate({ id, isCompleted })}>
                   <FullCheck />
                   {content}
                 </Button>
