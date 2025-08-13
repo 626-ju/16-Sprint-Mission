@@ -15,18 +15,17 @@ function Todo() {
     staleTime: 60 * 5 * 100,
   });
 
-  const todoItems =
-    data?.filter((item: Item) => item.isCompleted === false) ?? [];
+  const todoItems = data?.filter((item: Item) => item.isCompleted === false) ?? [];
 
   return (
     <div>
-      <Badge variant="todo">TO DO</Badge>
+      <Badge variant='todo'>TO DO</Badge>
       <StyledItems>
         {todoItems.length ? (
           todoItems?.map(({ id, name: content }: Item) => {
             return (
               <li key={id}>
-                <Button variant="todo">
+                <Button variant='todo'>
                   <EmptyCheck />
                   {content}
                 </Button>
@@ -34,7 +33,7 @@ function Todo() {
             );
           })
         ) : (
-          <EmptyList variant="todo" />
+          <EmptyList variant='todo' />
         )}
       </StyledItems>
     </div>

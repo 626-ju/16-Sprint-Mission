@@ -15,19 +15,19 @@ interface FormValues {
 function SearchForm() {
   const { register, handleSubmit, reset } = useForm<FormValues>();
 
-  const createTodoMutation = useMutation({
+  const { mutate } = useMutation({
     mutationFn: (newTodo: string) => createTodo(newTodo),
     onSuccess: () => reset(),
   });
 
   const addTodo = (data: FormValues) => {
-    createTodoMutation.mutate(data.todo);
+    mutate(data.todo);
   };
 
   return (
     <StyledForm onSubmit={handleSubmit(addTodo)}>
-      <Input variant="create" type="text" {...register('todo')} />
-      <Button variant="create">추가하기</Button>
+      <Input type='text' {...register('todo')} />
+      <Button variant='create'>추가하기</Button>
     </StyledForm>
   );
 }

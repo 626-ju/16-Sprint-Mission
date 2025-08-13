@@ -1,6 +1,5 @@
-import createEmotionServer, {
-} from "@emotion/server/create-instance";
-import createCache from "@emotion/cache";
+import createEmotionServer from '@emotion/server/create-instance';
+import createCache from '@emotion/cache';
 
 export function createEmotionCache() {
   return createCache({ key: 'css' });
@@ -8,8 +7,7 @@ export function createEmotionCache() {
 
 export const cache = createEmotionCache();
 
-export const { extractCriticalToChunks, constructStyleTagsFromChunks } =
-  createEmotionServer(cache);
+export const { extractCriticalToChunks, constructStyleTagsFromChunks } = createEmotionServer(cache);
 
 export function renderEmotionStyles(html: string) {
   const emotionChunks = extractCriticalToChunks(html);

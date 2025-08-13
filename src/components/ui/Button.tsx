@@ -1,10 +1,7 @@
 'use client';
 
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
-
-// type ButtonVariant = 'create' | 'update' | 'delete';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: 'create' | 'update' | 'delete' | 'todo' | 'done';
@@ -49,6 +46,7 @@ const DeleteButton = styled(DefaultButton)`
 `;
 
 const TodoButton = styled.button`
+  position: relative; //체크박스 기준점
   border-radius: 27px;
   border: 2px solid ${(props) => props.theme.colors.slate900};
   width: 588px;
@@ -59,9 +57,8 @@ const TodoButton = styled.button`
 `;
 
 const DoneButton = styled(TodoButton)`
-  width: 588px;
-  height: 50px;
   background-color: ${(props) => props.theme.colors.violet100};
+  text-decoration: line-through;
 `;
 
 const ButtonVariant = {

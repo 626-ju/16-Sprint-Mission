@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { theme } from "./theme";
-import { Global, css } from "@emotion/react";
+import { theme } from './theme';
+import { Global, css } from '@emotion/react';
 
 function GlobalStyles() {
   return <Global styles={[resetCss, globalCss]} />;

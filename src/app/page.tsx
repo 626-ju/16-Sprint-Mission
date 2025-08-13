@@ -2,11 +2,13 @@
 
 import styled from '@emotion/styled';
 import SearchForm from '@/components/feature/SearchForm';
+import TodoList from '@/components/feature/TodoList/TodoList';
 
 export default function Home() {
   return (
     <StyledHome>
       <SearchForm />
+      <TodoList />
     </StyledHome>
   );
 }

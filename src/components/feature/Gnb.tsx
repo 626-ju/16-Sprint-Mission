@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import styled from "@emotion/styled";
-import React from "react";
-import Logo from "@/assets/img/logo.svg";
+import styled from '@emotion/styled';
+import React from 'react';
+import Logo from '@/assets/img/logo.svg';
 
-import Link from "next/link";
+import Link from 'next/link';
 
 function Gnb() {
   return (
     <StyledHeader>
       <div>
-        <Link href="/">
+        <Link href='/'>
           <Logo />
         </Link>
       </div>

@@ -1,13 +1,13 @@
-export const createTodo = async (newTodo: string) => {
+export const deleteTodo = async (targetId: number) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANTID}/items`,
+    `${process.env.NEXT_PUBLIC_API_URL}/${process.env.NEXT_PUBLIC_TENANTID}/items/${targetId}`,
     {
-      method: 'POST',
+      method: 'DELTE',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: newTodo,
+        id: targetId,
       }),
     },
   );

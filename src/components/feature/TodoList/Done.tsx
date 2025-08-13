@@ -19,13 +19,13 @@ function Done() {
 
   return (
     <div>
-      <Badge variant="done">DONE</Badge>
+      <Badge variant='done'>DONE</Badge>
       <StyledItems>
         {doneItems.length ? (
           doneItems.map(({ id, name: content, isCompleted }: Item) => {
             return (
               <li key={id}>
-                <Button variant="done">
+                <Button variant='done'>
                   <FullCheck />
                   {content}
                 </Button>
@@ -33,7 +33,7 @@ function Done() {
             );
           })
         ) : (
-          <EmptyList variant="done" />
+          <EmptyList variant='done' />
         )}
       </StyledItems>
     </div>
