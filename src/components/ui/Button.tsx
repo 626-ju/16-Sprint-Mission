@@ -1,27 +1,25 @@
-"use client";
+'use client';
 
-import { css } from "@emotion/react";
-import styled from "@emotion/styled";
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
-type ButtonVariant = "create" | "update" | "delete";
+// type ButtonVariant = 'create' | 'update' | 'delete';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: ButtonVariant;
+  variant: 'create' | 'update' | 'delete' | 'todo' | 'done';
   children: ReactNode;
 }
 
 function Button({ variant, children, ...rest }: Props) {
-  return (
-    <StyledButton variant={variant} {...rest}>
-      {children}
-    </StyledButton>
-  );
+  const Component = ButtonVariant[variant];
+
+  return <Component {...rest}>{children}</Component>;
 }
 
 export default Button;
 
-const StyledButton = styled.button<Props>`
+const DefaultButton = styled.button`
   width: 168px;
   height: 52px;
   display: inline-flex;
@@ -33,28 +31,43 @@ const StyledButton = styled.button<Props>`
   border: 2px solid ${(props) => props.theme.colors.slate900};
   border-bottom: 4px solid ${(props) => props.theme.colors.slate900};
   border-right: 4px solid ${(props) => props.theme.colors.slate900};
-
-  /* 등록버튼 */
-  ${(props) =>
-    props.variant === "create" &&
-    css`
-      color: white;
-      background-color: ${props.theme.colors.violet600};
-    `}
-
-  /* 수정버튼 */
-  ${(props) =>
-    props.variant === "update" &&
-    css`
-      color: ${props.theme.colors.slate900};
-      background-color: ${props.theme.colors.slate200};
-    `}
-      
-  /* 삭제버튼 */
-  ${(props) =>
-    props.variant === "delete" &&
-    css`
-      color: white;
-      background-color: ${props.theme.colors.rose500};
-    `}
 `;
+
+const CreateButton = styled(DefaultButton)`
+  color: white;
+  background-color: ${(props) => props.theme.colors.violet600};
+`;
+
+const UpdateButton = styled(DefaultButton)`
+  color: ${(props) => props.theme.colors.slate900};
+  background-color: ${(props) => props.theme.colors.slate200};
+`;
+
+const DeleteButton = styled(DefaultButton)`
+  color: white;
+  background-color: ${(props) => props.theme.colors.rose500};
+`;
+
+const TodoButton = styled.button`
+  border-radius: 27px;
+  border: 2px solid ${(props) => props.theme.colors.slate900};
+  width: 588px;
+  height: 50px;
+  color: ${(props) => props.theme.colors.slate800};
+  text-align: left;
+  padding-left: 60px;
+`;
+
+const DoneButton = styled(TodoButton)`
+  width: 588px;
+  height: 50px;
+  background-color: ${(props) => props.theme.colors.violet100};
+`;
+
+const ButtonVariant = {
+  create: CreateButton,
+  delete: DeleteButton,
+  update: UpdateButton,
+  todo: TodoButton,
+  done: DoneButton,
+};
